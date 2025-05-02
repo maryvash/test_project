@@ -1,3 +1,4 @@
+ 
 from instr import *
 from final_win import *
 from PyQt5.QtCore import Qt, QTimer, QTime
@@ -135,3 +136,4 @@ my_win = TestWin()
 # my_win.show()
 
 app.exec_()
+ 
