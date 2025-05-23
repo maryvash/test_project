@@ -1,26 +1,30 @@
+# напиши здесь код третьего экрана приложения
+
 
 from instr import *
-from second_win import *
+# from second_win import *
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget, QLabel, QPushButton, QHBoxLayout, QVBoxLayout, QLineEdit
 
 class FinalWin(QWidget):
-      def __init__(self, exp):
+    def __init__(self, exp):
         super().__init__()
         self.set_appear()
+        self.exp = exp
         self.initUI()
         self.show()
-        self.exp = exp
+
 
     def set_appear(self):
         self.resize(win_width, win_height)
         self.setWindowTitle(txt_finalwin)
         self.move(win_x, win_y)
         
+        
     def results (self):
-        self.index=(4*(int(self.exp.t1)+int(self.exp.t2)+int(self.exp.t3))-200)/10
-        if self.exp.age >= 15:
-            if self.index >= 15:
+        self.index=(4*(int(self.exp.test1)+int(self.exp.test2)+int(self.exp.test3))-200)/10
+        if int(self.exp.age) >= 15:
+            if int(self.index) >= 15:
                 return txt_res1
             elif self.index<15 and self.index>=11:
                 return txt_res2
@@ -77,7 +81,9 @@ class FinalWin(QWidget):
     def initUI(self):
         self.main_line = QVBoxLayout()
         self.work_text = QLabel(txt_workheart+self.results())
+        self.name_result = QLabel(self.exp.name + ", " + "твои результаты:")
         self.index_text = QLabel(txt_index + str(self.index))
+        self.main_line.addWidget(self.name_result, alignment= Qt.AlignCenter)
         self.main_line.addWidget(self.index_text, alignment= Qt.AlignCenter)
         self.main_line.addWidget(self.work_text, alignment= Qt.AlignCenter)
         self.setLayout(self.main_line)
@@ -88,9 +94,9 @@ class FinalWin(QWidget):
 
 # app = QApplication([])
 # my_win = FinalWin(2)
-# # my_win.set_appear()
-# # my_win.initUI()
-# # my_win.show()
+# my_win.set_appear()
+# my_win.initUI()
+# my_win.show()
 
 # app.exec_()
  
